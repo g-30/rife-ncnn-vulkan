@@ -259,7 +259,7 @@ jobs:
         path: D:\a\rife-ncnn-vulkan\rife-ncnn-vulkan\rife-ncnn-vulkan-refs\heads\master-windows.zip
 
   release:
-    needs: [setup, ubuntu]
+    needs: [setup, ubuntu, windows]
     runs-on: ubuntu-latest
     steps:
     - name: download

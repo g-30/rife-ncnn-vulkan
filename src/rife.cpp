@@ -149,17 +149,28 @@ int RIFE::load(const std::string& modeldir)
 
 #if _WIN32
     load_param_model(flownet, modeldir, L"flownet");
-    if (!rife_v4)
-    {
-        load_param_model(contextnet, modeldir, L"contextnet");
-        load_param_model(fusionnet, modeldir, L"fusionnet");
+    try{
+        if (!rife_v4)
+        {
+            load_param_model(contextnet, modeldir, L"contextnet");
+            load_param_model(fusionnet, modeldir, L"fusionnet");
+        }
+    }catch{
+        rife_v4=true;
+        rife_v2=false;
     }
+    
 #else
     load_param_model(flownet, modeldir, "flownet");
-    if (!rife_v4)
-    {
-        load_param_model(contextnet, modeldir, "contextnet");
-        load_param_model(fusionnet, modeldir, "fusionnet");
+    try{
+        if (!rife_v4)
+        {
+            load_param_model(contextnet, modeldir, "contextnet");
+            load_param_model(fusionnet, modeldir, "fusionnet");
+        }
+    }catch{
+        rife_v4=true;
+        rife_v2=false;
     }
 #endif
 

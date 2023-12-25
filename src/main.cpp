@@ -665,15 +665,9 @@ int main(int argc, char** argv)
     
     else if (model.find(PATHSTR("rife-v3")) != path_t::npos)
     {
-        // fine
-        //hacky way i hope this works lol
-        if model.find(PATHSTR("rife-v3.6")){
-            rife_v4=true;
-            fprintf(stderr, "3.6\n");
-        }
-        else{
-            rife_v2 = true;
-        }
+        
+        rife_v2 = true;
+        
         
     }
     

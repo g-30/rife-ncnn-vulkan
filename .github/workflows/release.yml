@@ -295,8 +295,8 @@ jobs:
 
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: artifacts/ubuntu/ubuntu.zip
-        asset_name: ubuntu.zip
+        asset_path: build/rife-ncnn-vulkan-refs\heads\master-windows.zip
+        asset_name: rife-ncnn-vulkan-ubuntu.zip
         asset_content_type: application/zip
 
     - name: upload-macos
@@ -318,5 +318,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: artifacts/windows/windows.zip
-        asset_name: windows.zip
+        asset_name: D:\a\rife-ncnn-vulkan\rife-ncnn-vulkan\rife-ncnn-vulkan-refs\heads\master-windows.zip
         asset_content_type: application/zip

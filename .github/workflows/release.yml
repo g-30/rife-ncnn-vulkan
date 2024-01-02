@@ -51,12 +51,12 @@ jobs:
         cmake --build . -j 2
     - name: package
       run: |
-        mkdir -p ${{ env.PACKAGENAME }}
-        cp README.md LICENSE ${{ env.PACKAGENAME }}
-        cp build/${{ needs.setup.outputs.APPNAME }} ${{ env.PACKAGENAME }}
-        strip -g ${{ env.PACKAGENAME }}/${{ needs.setup.outputs.APPNAME }}
-        cp -r models/* ${{ env.PACKAGENAME }}
-        zip -9 -r ${{ env.PACKAGENAME }}.zip ${{ env.PACKAGENAME }}
+        mkdir -p ubuntu
+        cp README.md LICENSE ubuntu
+        cp build/${{ needs.setup.outputs.APPNAME }} ubuntu
+        strip -g ubuntu/${{ needs.setup.outputs.APPNAME }}
+        cp -r models/* ubuntu
+        zip -9 -r ubuntu.zip ubuntu
     - name: log
       run: |
           ls
@@ -66,7 +66,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ubuntu
-        path: build/rife-ncnn-vulkan
+        path: ubuntu.zip
     
 
   openmp-macos:

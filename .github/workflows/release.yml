@@ -315,7 +315,11 @@ jobs:
         asset_path: artifacts/macos/macos.zip
         asset_name: macos.zip
         asset_content_type: application/zip
-
+    - name: log
+      run: |
+        ls
+        cd windows
+        ls
     - name: upload-windows
       uses: actions/upload-release-asset@v1
       env:

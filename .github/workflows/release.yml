@@ -318,8 +318,11 @@ jobs:
     - name: log
       run: |
         ls
+        cd artifacts
+        ls
         cd windows
         ls
+        
     - name: upload-windows
       uses: actions/upload-release-asset@v1
       env:

@@ -330,6 +330,6 @@ jobs:
         PACKAGENAME: ${{ needs.setup.outputs.APPNAME }}-${{ needs.setup.outputs.VERSION }}-windows
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: artifacts/windows/windows.zip
+        asset_path: artifacts/windows/master-windows.zip
         asset_name: windows.zip
         asset_content_type: application/zip

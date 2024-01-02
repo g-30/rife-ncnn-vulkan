@@ -662,11 +662,15 @@ int main(int argc, char** argv)
         // fine
         rife_v2 = true;
     }
+    
     else if (model.find(PATHSTR("rife-v3")) != path_t::npos)
     {
-        // fine
+        
         rife_v2 = true;
+        
+        
     }
+    
     else if (model.find(PATHSTR("rife-v4")) != path_t::npos)
     {
         // fine
@@ -710,7 +714,7 @@ int main(int argc, char** argv)
             output_files.resize(numframe);
             timesteps.resize(numframe);
 
-            double scale = (double)count / numframe;
+            double scale = (double)(count - 1.0) / (numframe - 1.0);
             for (int i=0; i<numframe; i++)
             {
                 // TODO provide option to control timestep interpolate method

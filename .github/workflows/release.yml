@@ -189,11 +189,13 @@ jobs:
         strip ${{ env.PACKAGENAME }}/${{ needs.setup.outputs.APPNAME }}
         cp -r models/* ${{ env.PACKAGENAME }}
         zip -9 -r ${{ env.PACKAGENAME }}.zip ${{ env.PACKAGENAME }}
+    - name: ls
+      run: ls
     - name: upload
       uses: actions/upload-artifact@v2
       with:
         name: ${{ env.PACKAGENAME }}
-        path: ${{ env.PACKAGENAME }}.zip
+        path: /rife-ncnn-vulkan/rife-ncnn-vulkan/rife-ncnn-vulkan-refs/heads/master-ubuntu.zip
 
   windows:
     needs: [setup]
@@ -292,7 +294,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: artifacts/ubuntu/ubuntu.zip
         asset_name: ubuntu.zip
         asset_content_type: application/zip
@@ -314,7 +315,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PACKAGENAME: ${{ needs.setup.outputs.APPNAME }}-${{ needs.setup.outputs.VERSION }}-windows
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: artifacts/windows/windows.zip
         asset_name: windows.zip
         asset_content_type: application/zip

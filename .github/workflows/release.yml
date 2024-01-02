@@ -79,7 +79,8 @@ jobs:
         path: openmp-install
         key: openmp-macos-release-11.0.0
     - name: Select Xcode version
-      run: sudo xcode-select -s '/Applications/Xcode_12.4.app/Contents/Developer'
+      run: sudo xcode-select --switch '/Library/Developer/CommandLineTools'
+    - name: Select Xcode
     - name: checkout
       if: steps.cache-openmp.outputs.cache-hit != 'true'
       uses: actions/checkout@v2

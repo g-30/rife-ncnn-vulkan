@@ -159,17 +159,19 @@ jobs:
         hdiutil detach /Volumes/vulkansdk-macos-1.3.268.0
     - name: log
       run: |
-          cd /Users/runner/work/rife-ncnn-vulkan/rife-ncnn-vulkan/vulkansdk-macos-1.3.268.0/ && find / -type d -name MoltenVK
+          cd /Users/runner/work/rife-ncnn-vulkan/rife-ncnn-vulkan/vulkansdk-macos-1.3.268.0/ 
           ls
     - name: build-x86_64
       run: |
         export VULKAN_SDK=`pwd`/vulkansdk-macos-1.3.268.0/macOS
         mkdir build-x86_64 && cd build-x86_64
+        brew install git
+        git clone  https://github.com/KhronosGroup/MoltenVK.git
         cmake -DUSE_STATIC_MOLTENVK=ON -DCMAKE_OSX_ARCHITECTURES="x86_64" \
             -DOpenMP_C_FLAGS="-Xclang -fopenmp" -DOpenMP_CXX_FLAGS="-Xclang -fopenmp" \
             -DOpenMP_C_LIB_NAMES="libomp" -DOpenMP_CXX_LIB_NAMES="libomp" \
             -DOpenMP_libomp_LIBRARY="$DEVELOPER_DIR/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libomp.a" \
-            -DVulkan_INCLUDE_DIR=`pwd`/../vulkansdk-macos-1.3.268.0/MoltenVK/include \
+            -DVulkan_INCLUDE_DIR=`pwd`/../MoltenVK/MoltenVK/include \
             -DVulkan_LIBRARY=`pwd`/../vulkansdk-macos-1.3.268.0/MoltenVK/MoltenVK.xcframework/macos-arm64_x86_64/libMoltenVK.a \
             ../src
         cmake --build . -j 3

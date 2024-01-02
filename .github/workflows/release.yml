@@ -146,46 +146,40 @@ jobs:
       id: cache-vulkansdk
       uses: actions/cache@v1
       with:
-        path: "vulkansdk-macos-1.3.268.0"
-        key: vulkansdk-macos-1.3.268.0
+        path: "vulkansdk-macos-1.2.189.0"
+        key: vulkansdk-macos-1.2.189.0
     - name: vulkansdk
       if: steps.cache-vulkansdk.outputs.cache-hit != 'true'
       run: |
-        wget https://sdk.lunarg.com/sdk/download/1.3.268.0/mac/vulkansdk-macos-1.3.268.0.dmg?Human=true -O vulkansdk-macos-1.3.268.0.dmg
-        hdiutil attach vulkansdk-macos-1.3.268.0.dmg
-        cp -r /Volumes/vulkansdk-macos-1.3.268.0 .
-        rm -rf vulkansdk-macos-1.3.268.0/Applications
-        find vulkansdk-macos-1.3.268.0 -type f | grep -v -E 'vulkan|glslang|MoltenVK' | xargs rm
-        hdiutil detach /Volumes/vulkansdk-macos-1.3.268.0
-    - name: log
-      run: |
-          cd /Users/runner/work/rife-ncnn-vulkan/rife-ncnn-vulkan/vulkansdk-macos-1.3.268.0/ 
-          ls
+        wget https://sdk.lunarg.com/sdk/download/1.2.189.0/mac/vulkansdk-macos-1.2.189.0.dmg?Human=true -O vulkansdk-macos-1.2.189.0.dmg
+        hdiutil attach vulkansdk-macos-1.2.189.0.dmg
+        cp -r /Volumes/vulkansdk-macos-1.2.189.0 .
+        rm -rf vulkansdk-macos-1.2.189.0/Applications
+        find vulkansdk-macos-1.2.189.0 -type f | grep -v -E 'vulkan|glslang|MoltenVK' | xargs rm
+        hdiutil detach /Volumes/vulkansdk-macos-1.2.189.0
     - name: build-x86_64
       run: |
-        export VULKAN_SDK=`pwd`/vulkansdk-macos-1.3.268.0/macOS
+        export VULKAN_SDK=`pwd`/vulkansdk-macos-1.2.189.0/macOS
         mkdir build-x86_64 && cd build-x86_64
-        brew install git
-        git clone  https://github.com/KhronosGroup/MoltenVK.git
         cmake -DUSE_STATIC_MOLTENVK=ON -DCMAKE_OSX_ARCHITECTURES="x86_64" \
             -DOpenMP_C_FLAGS="-Xclang -fopenmp" -DOpenMP_CXX_FLAGS="-Xclang -fopenmp" \
             -DOpenMP_C_LIB_NAMES="libomp" -DOpenMP_CXX_LIB_NAMES="libomp" \
             -DOpenMP_libomp_LIBRARY="$DEVELOPER_DIR/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libomp.a" \
-            -DVulkan_INCLUDE_DIR=`pwd`/../MoltenVK/MoltenVK/include \
-            -DVulkan_LIBRARY=`pwd`/../vulkansdk-macos-1.3.268.0/MoltenVK/MoltenVK.xcframework/macos-arm64_x86_64/libMoltenVK.a \
+            -DVulkan_INCLUDE_DIR=`pwd`/../vulkansdk-macos-1.2.189.0/MoltenVK/include \
+            -DVulkan_LIBRARY=`pwd`/../vulkansdk-macos-1.2.189.0/MoltenVK/MoltenVK.xcframework/macos-arm64_x86_64/libMoltenVK.a \
             ../src
         cmake --build . -j 3
     - name: build-arm64
       run: |
-        export VULKAN_SDK=`pwd`/vulkansdk-macos-1.3.268.0/macOS
+        export VULKAN_SDK=`pwd`/vulkansdk-macos-1.2.189.0/macOS
         mkdir build-arm64 && cd build-arm64
         cmake -DUSE_STATIC_MOLTENVK=ON -DCMAKE_OSX_ARCHITECTURES="arm64" \
             -DCMAKE_CROSSCOMPILING=ON -DCMAKE_SYSTEM_PROCESSOR=arm64 \
             -DOpenMP_C_FLAGS="-Xclang -fopenmp" -DOpenMP_CXX_FLAGS="-Xclang -fopenmp" \
             -DOpenMP_C_LIB_NAMES="libomp" -DOpenMP_CXX_LIB_NAMES="libomp" \
             -DOpenMP_libomp_LIBRARY="$DEVELOPER_DIR/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libomp.a" \
-            -DVulkan_INCLUDE_DIR=`pwd`/../vulkansdk-macos-1.3.268.0/MoltenVK/include \
-            -DVulkan_LIBRARY=`pwd`/../vulkansdk-macos-1.3.268.0/MoltenVK/MoltenVK.xcframework/macos-arm64_x86_64/libMoltenVK.a \
+            -DVulkan_INCLUDE_DIR=`pwd`/../vulkansdk-macos-1.2.189.0/MoltenVK/include \
+            -DVulkan_LIBRARY=`pwd`/../vulkansdk-macos-1.2.189.0/MoltenVK/MoltenVK.xcframework/macos-arm64_x86_64/libMoltenVK.a \
             ../src
         cmake --build . -j 3
     - name: package
@@ -196,13 +190,11 @@ jobs:
         strip ${{ env.PACKAGENAME }}/${{ needs.setup.outputs.APPNAME }}
         cp -r models/* ${{ env.PACKAGENAME }}
         zip -9 -r ${{ env.PACKAGENAME }}.zip ${{ env.PACKAGENAME }}
-    - name: ls
-      run: ls
     - name: upload
       uses: actions/upload-artifact@v2
       with:
         name: ${{ env.PACKAGENAME }}
-        path: /rife-ncnn-vulkan/rife-ncnn-vulkan/rife-ncnn-vulkan-refs/heads/master-ubuntu.zip
+        path: ${{ env.PACKAGENAME }}.zip
 
   windows:
     needs: [setup]
@@ -302,7 +294,7 @@ jobs:
 
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: /rife-ncnn-vulkan/rife-ncnn-vulkan/rife-ncnn-vulkan-refs/heads/master-ubuntu.zip
+        asset_path: /rife-ncnn-vulkan/rife-ncnn-vulkan-refs/heads/master-ubuntu.zip
         asset_name: rife-ncnn-vulkan-ubuntu.zip
         asset_content_type: application/zip
 

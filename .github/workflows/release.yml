@@ -301,7 +301,7 @@ jobs:
 
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: artifacts/ubuntu.zip
+        asset_path: artifacts/ubuntu/ubuntu.zip
         asset_name: ubuntu.zip
         asset_content_type: application/zip
 
@@ -312,7 +312,7 @@ jobs:
         PACKAGENAME: ${{ needs.setup.outputs.APPNAME }}-${{ needs.setup.outputs.VERSION }}-macos
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: artifacts/macos.zip
+        asset_path: artifacts/macos/macos.zip
         asset_name: macos.zip
         asset_content_type: application/zip
 

@@ -668,6 +668,11 @@ int main(int argc, char** argv)
         
         rife_v4 = true;
         
+    }
+    else if (model.find(PATHSTR("rife-v3.9")) != path_t::npos)
+    {
+        
+        rife_v4 = true;
         
     }
     else if (model.find(PATHSTR("rife-v3")) != path_t::npos)

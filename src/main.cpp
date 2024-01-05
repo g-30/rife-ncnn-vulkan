@@ -657,12 +657,19 @@ int main(int argc, char** argv)
 
     bool rife_v2 = false;
     bool rife_v4 = false;
+    
     if (model.find(PATHSTR("rife-v2")) != path_t::npos)
     {
         // fine
         rife_v2 = true;
     }
-    
+    else if (model.find(PATHSTR("rife-v3.6")) != path_t::npos)
+    {
+        
+        rife_v4 = true;
+        
+        
+    }
     else if (model.find(PATHSTR("rife-v3")) != path_t::npos)
     {
         

@@ -197,7 +197,8 @@ jobs:
       run: |
         mkdir -p macos
         cp README.md LICENSE macos/
-        lipo -create build-x86_64/${{ needs.setup.outputs.APPNAME }} build-arm64/${{ needs.setup.outputs.APPNAME }} -o ${{ env.PACKAGENAME }}/${{ needs.setup.outputs.APPNAME }}        strip macos/${{ needs.setup.outputs.APPNAME }}
+        lipo -create build-x86_64/${{ needs.setup.outputs.APPNAME }} build-arm64/${{ needs.setup.outputs.APPNAME }} -o ${{ env.PACKAGENAME }}/${{ needs.setup.outputs.APPNAME }}        
+        strip macos/${{ needs.setup.outputs.APPNAME }}
         cp -r models/* macos
         zip -9 -r macos.zip macos
     - name: upload

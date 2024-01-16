@@ -166,6 +166,8 @@ cmake --build . -j 4
 | rife-v4.12-lite | 4.12-lite |
 | rife-v4.13 | 4.13 |
 | rife-v4.13-lite | 4.13-lite |
+| rife-v4.14 | 4.14 |
+| rife-v4.14-lite | 4.14-lite |
 
 ## Sample Images
 

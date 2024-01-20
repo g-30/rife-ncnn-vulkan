@@ -4,6 +4,10 @@
 
 https://github.com/TNTwise/REAL-Video-Enhancer/wiki/Convert-Rife-Models
 
+# Want Ensemble Models?
+ - https://github.com/TNTwise/Rife-Vulkan-Models/releases/tag/models - I export every new model in ensemble, but don't add them here due to size.
+
+
 ![CI](https://github.com/nihui/rife-ncnn-vulkan/workflows/CI/badge.svg)
 ![download](https://img.shields.io/github/downloads/nihui/rife-ncnn-vulkan/total.svg)
 

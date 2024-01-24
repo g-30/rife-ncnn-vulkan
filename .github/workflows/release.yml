@@ -142,12 +142,7 @@ jobs:
       run: |
         sudo cp openmp-macos/include/* $DEVELOPER_DIR/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
         sudo cp openmp-macos/lib/libomp.a $DEVELOPER_DIR/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib
-    - name: cache-vulkansdk
-      id: cache-vulkansdk
-      uses: actions/cache@v1
-      with:
-        path: "vulkansdk-macos-1.2.162.0"
-        key: vulkansdk-macos-1.2.162.0
+    
     - name: vulkansdk
       if: steps.cache-vulkansdk.outputs.cache-hit != 'true'
       run: |

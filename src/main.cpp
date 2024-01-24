@@ -568,9 +568,9 @@ int main(int argc, char** argv)
         case 'l':
             {
             std::string text;
-            for (auto i{ 0 }; i < ncnn::get_gpu_count(); i++)
+            for (int i=0; i < ncnn::get_gpu_count(); i++)
                 text += std::to_string(i) + ": " + ncnn::get_gpu_info(i).device_name() + "\n";
-            printf("%p\n");
+            
             break;
             }
         case 'h':

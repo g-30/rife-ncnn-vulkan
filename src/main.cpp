@@ -118,6 +118,7 @@ static void print_usage()
     fprintf(stdout, "  -z                   enable temporal tta mode\n");
     fprintf(stdout, "  -u                   enable UHD mode\n");
     fprintf(stderr, "  -f pattern-format    output image filename pattern format (%%08d.jpg/png/webp, default=ext/%%08d.png)\n");
+    fprintf(stderr, "  -l                   list out available gpu devices\n");
 }
 
 static int decode_image(const path_t& imagepath, ncnn::Mat& image, int* webp)
@@ -517,7 +518,7 @@ int main(int argc, char** argv)
     }
 #else // _WIN32
     int opt;
-    while ((opt = getopt(argc, argv, "0:1:i:o:n:s:m:g:j:f:vxzuh")) != -1)
+    while ((opt = getopt(argc, argv, "0:1:i:o:n:s:m:g:j:f:vxzulh")) != -1)
     {
         switch (opt)
         {
@@ -564,6 +565,14 @@ int main(int argc, char** argv)
         case 'u':
             uhd_mode = 1;
             break;
+        case 'l':
+            {
+            std::string text;
+            for (auto i{ 0 }; i < ncnn::get_gpu_count(); i++)
+                text += std::to_string(i) + ": " + ncnn::get_gpu_info(i).device_name() + "\n";
+            printf("%p\n");
+            break;
+            }
         case 'h':
         default:
             print_usage();

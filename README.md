@@ -94,6 +94,7 @@ Usage: rife-ncnn-vulkan -0 infile -1 infile1 -o outfile [options]...
   -z                   enable temporal tta mode
   -u                   enable UHD mode
   -f pattern-format    output image filename pattern format (%08d.jpg/png/webp, default=ext/%08d.png)
+  -l                   list out available gpu devices
 ```
 
 - `input0-path`, `input1-path` and `output-path` accept file path

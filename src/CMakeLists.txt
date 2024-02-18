@@ -92,7 +92,7 @@ if(NOT USE_SYSTEM_NCNN)
     if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/ncnn/CMakeLists.txt")
         message(FATAL_ERROR "The submodules were not downloaded! Please update submodules with \"git submodule update --init --recursive\" and try again.")
     endif()
-
+    option(NCNN_SIMPLEVK "" OFF)
     option(NCNN_INSTALL_SDK "" OFF)
     option(NCNN_PIXEL_ROTATE "" OFF)
     option(NCNN_PIXEL_AFFINE "" OFF)

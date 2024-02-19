@@ -127,7 +127,7 @@ pacman -S vulkan-headers vulkan-icd-loader
 2. Clone this project with all submodules
 
 ```shell
-git clone https://github.com/nihui/rife-ncnn-vulkan.git
+git clone https://github.com/tntwise/rife-ncnn-vulkan.git
 cd rife-ncnn-vulkan
 git submodule update --init --recursive
 ```

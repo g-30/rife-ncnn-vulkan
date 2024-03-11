@@ -102,8 +102,8 @@ BinaryOp                 Mul_82                   2 1 215 block0.convblock.7.bet
 BinaryOp                 Add_83                   2 1 216 214_splitncnn_0 217
 ReLU                     LeakyRelu_84             1 1 217 218 0=2.000000e-01
 Deconvolution            ConvTranspose_85         1 1 218 219 0=24 1=4 3=2 4=1 5=1 6=73728
-PixelShuffle             DepthToSpace_86          1 1 219 220 0=2
-Interp                   Resize_88                1 1 220 225 0=2 1=8.000000e+00 2=8.000000e+00
+PixelShuffle             DepthToSpace_86          1 1 219 flow0 0=2
+Interp                   Resize_88                1 1 flow0 225 0=2 1=8.000000e+00 2=8.000000e+00
 Split                    splitncnn_11             1 2 225 225_splitncnn_0 225_splitncnn_1
 Crop                     Slice_93                 1 1 225_splitncnn_1 230 -23309=1,0 -23310=1,4 -23311=1,0
 BinaryOp                 Mul_95                   1 1 230 232 0=2 1=1 2=8.000000e+00
@@ -167,8 +167,8 @@ BinaryOp                 Mul_177                  2 1 321 block1.convblock.7.bet
 BinaryOp                 Add_178                  2 1 322 320_splitncnn_0 323
 ReLU                     LeakyRelu_179            1 1 323 324 0=2.000000e-01
 Deconvolution            ConvTranspose_180        1 1 324 325 0=24 1=4 3=2 4=1 5=1 6=49152
-PixelShuffle             DepthToSpace_181         1 1 325 326 0=2
-Interp                   Resize_183               1 1 326 331 0=2 1=4.000000e+00 2=4.000000e+00
+PixelShuffle             DepthToSpace_181         1 1 325 flow1 0=2
+Interp                   Resize_183               1 1 flow1 331 0=2 1=4.000000e+00 2=4.000000e+00
 Split                    splitncnn_21             1 2 331 331_splitncnn_0 331_splitncnn_1
 Crop                     Slice_188                1 1 331_splitncnn_1 336 -23309=1,0 -23310=1,4 -23311=1,0
 Crop                     Slice_195                1 1 331_splitncnn_0 343 -23309=1,4 -23310=1,5 -23311=1,0
@@ -232,8 +232,8 @@ BinaryOp                 Mul_273                  2 1 428 block2.convblock.7.bet
 BinaryOp                 Add_274                  2 1 429 427_splitncnn_0 430
 ReLU                     LeakyRelu_275            1 1 430 431 0=2.000000e-01
 Deconvolution            ConvTranspose_276        1 1 431 432 0=24 1=4 3=2 4=1 5=1 6=36864
-PixelShuffle             DepthToSpace_277         1 1 432 433 0=2
-Interp                   Resize_279               1 1 433 438 0=2 1=2.000000e+00 2=2.000000e+00
+PixelShuffle             DepthToSpace_277         1 1 432 flow2 0=2
+Interp                   Resize_279               1 1 flow2 438 0=2 1=2.000000e+00 2=2.000000e+00
 Split                    splitncnn_31             1 2 438 438_splitncnn_0 438_splitncnn_1
 Crop                     Slice_284                1 1 438_splitncnn_1 443 -23309=1,0 -23310=1,4 -23311=1,0
 Crop                     Slice_291                1 1 438_splitncnn_0 450 -23309=1,4 -23310=1,5 -23311=1,0
@@ -296,8 +296,8 @@ BinaryOp                 Mul_369                  2 1 535 block3.convblock.7.bet
 BinaryOp                 Add_370                  2 1 536 534_splitncnn_0 537
 ReLU                     LeakyRelu_371            1 1 537 538 0=2.000000e-01
 Deconvolution            ConvTranspose_372        1 1 538 539 0=24 1=4 3=2 4=1 5=1 6=24576
-PixelShuffle             DepthToSpace_373         1 1 539 540 0=2
-Interp                   Resize_375               1 1 540 545 0=2
+PixelShuffle             DepthToSpace_373         1 1 539 flow3 0=2
+Interp                   Resize_375               1 1 flow3 545 0=2
 Split                    splitncnn_41             1 2 545 545_splitncnn_0 545_splitncnn_1
 Crop                     Slice_380                1 1 545_splitncnn_1 550 -23309=1,0 -23310=1,4 -23311=1,0
 Crop                     Slice_387                1 1 545_splitncnn_0 557 -23309=1,4 -23310=1,5 -23311=1,0

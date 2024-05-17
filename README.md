@@ -2,7 +2,7 @@
 
 # Guide to convert your own models:
 
-https://github.com/TNTwise/REAL-Video-Enhancer/wiki/Convert-Rife-Models
+https://github.com/TNTwise/REAL-Video-Enhancer/wiki/Convert-Rife-Models-to-NCNN-format
 
 # Want Ensemble Models?
  - https://github.com/TNTwise/Rife-Vulkan-Models/releases/tag/models - I export every new model in ensemble, but don't add them here due to size.

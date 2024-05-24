@@ -91,7 +91,7 @@ Usage: rife-ncnn-vulkan -0 infile -1 infile1 -o outfile [options]...
   -g gpu-id            gpu device to use (-1=cpu, default=auto) can be 0,1,2 for multi-gpu
   -j load:proc:save    thread count for load/proc/save (default=1:2:2) can be 1:2,2,2:2 for multi-gpu
   -x                   enable spatial tta mode
-  -z                   enable temporal tta mode
+  -z                   enable temporal tta mode (ensemble result but slower)
   -u                   enable UHD mode
   -f pattern-format    output image filename pattern format (%08d.jpg/png/webp, default=ext/%08d.png)
   -l                   list out available gpu devices
@@ -173,6 +173,10 @@ cmake --build . -j 4
 | rife-v4.13-lite | 4.13-lite |
 | rife-v4.14 | 4.14 |
 | rife-v4.14-lite | 4.14-lite |
+| rife-v4.15 | 4.15 |
+| rife-v4.15-lite | 4.15-lite |
+| rife-v4.16-lite | 4.16-lite |
+| rife-v4.17 | 4.17 |
 
 ## Sample Images
 

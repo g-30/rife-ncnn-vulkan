@@ -1,7 +1,7 @@
 name: release
 
-on: [push, pull_request]
-
+on: [push, pull_request, workflow_dispatch]
+    
 env: 
   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
   APPLICATION_NAME: rife-ncnn-vulkan

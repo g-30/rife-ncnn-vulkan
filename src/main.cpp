@@ -515,8 +515,9 @@ int main(int argc, char** argv)
             std::string text;
             for (int i=0; i < ncnn::get_gpu_count(); i++)
                 text += std::to_string(i) + ": " + ncnn::get_gpu_info(i).device_name() + "\n";
-            
+            return -1;
             break;
+            
         }
         case L'h':
         default:
@@ -578,8 +579,9 @@ int main(int argc, char** argv)
             std::string text;
             for (int i=0; i < ncnn::get_gpu_count(); i++)
                 text += std::to_string(i) + ": " + ncnn::get_gpu_info(i).device_name() + "\n";
-            
+            return -1;
             break;
+            
             }
         case 'h':
         default:

@@ -510,6 +510,14 @@ int main(int argc, char** argv)
         case L'u':
             uhd_mode = 1;
             break;
+        case L'l':
+            {
+            std::string text;
+            for (int i=0; i < ncnn::get_gpu_count(); i++)
+                text += std::to_string(i) + ": " + ncnn::get_gpu_info(i).device_name() + "\n";
+            
+            break;
+        }
         case L'h':
         default:
             print_usage();

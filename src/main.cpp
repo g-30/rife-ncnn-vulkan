@@ -463,7 +463,7 @@ int main(int argc, char** argv)
 #if _WIN32
     setlocale(LC_ALL, "");
     wchar_t opt;
-    while ((opt = getopt(argc, argv, L"0:1:i:o:n:s:m:g:j:f:vxzuh")) != (wchar_t)-1)
+    while ((opt = getopt(argc, argv, L"0:1:i:o:n:s:m:g:j:f:vxzulh")) != (wchar_t)-1)
     {
         switch (opt)
         {
